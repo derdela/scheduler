@@ -1,6 +1,6 @@
 angular.module('teacher')
     .service('teacherService', ['$http', function ($http) {
-        const api = 'http://localhost:5000/api/';
+        const api = '/api/';
         this.all = all;
         this.getSchedule = getSchedule;
         this.addAvailability = addAvailability;
@@ -8,7 +8,7 @@ angular.module('teacher')
 
         function all() {
             return $http
-                .get('http://localhost:5000/api/teachers/')
+                .get(api + 'teachers/')
                 .then(res => res.data)
                 .then(teachers => teachers.map(teacher => {
                     teacher.availabilty = groupByDays(teacher);
@@ -18,7 +18,7 @@ angular.module('teacher')
 
         function getSchedule() {
             return $http
-                .get('http://localhost:5000/api/teachers/5860fa2bb829a6ac3cea12ed')
+                .get(api +'teachers/5860fa2bb829a6ac3cea12ed')
                 .then(res => res.data)
                 .then(teacher => {
                     const schedule = groupByDays(teacher);
@@ -34,7 +34,7 @@ angular.module('teacher')
 
         function blockSlot(teacherId, studentId, day, slot) {
             return $http
-                .put(`http://localhost:5000/api/teachers/${teacherId}/slots`, {
+                .put(`${api}/api/teachers/${teacherId}/slots`, {
                     day: day,
                     from: slot.from,
                     to: slot.to,
