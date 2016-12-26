@@ -1,0 +1,13 @@
+<h1>Teacher</h1>
+<div>
+    day: <select ng-model="$ctrl.form.day" ng-options="day for day in $ctrl.days"></select>
+    from: <input ng-model="$ctrl.form.from" type="time"/>
+    to: <input ng-model="$ctrl.form.to" type="time"/>
+    <button class="btn btn-default" ng-click="$ctrl.onAddAvailability()">add slot</button>
+</div>
+<div class="row">
+    <div class="col-sm-1" ng-repeat="day in $ctrl.days">
+        <span>{{day}}</span>
+        <div ng-repeat="availability in $ctrl.schedule[day]">{{availability.from | date: 'H:mm'}} - {{availability.to | date: 'H:mm'}}</div>
+    </div>
+</div>

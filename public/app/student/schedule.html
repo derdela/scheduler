@@ -1,0 +1,8 @@
+<h1>Student</h1>
+<div class="row" ng-repeat="teacher in $ctrl.teachers">
+    <h2>{{teacher.name}}</h2>
+        <div class="col-sm-1" ng-repeat="day in $ctrl.days" ng-if="teacher.availabilty[day]">
+            <span>{{day}}</span>
+            <button class="btn btn-default" ng-disabled="!slot.available" ng-click="$ctrl.onSlotClick(teacher._id, day, slot)" ng-repeat="slot in teacher.slots[day]">{{slot.from | date: 'H:mm'}} - {{slot.to | date: 'H:mm'}}</button>
+        </div>
+</div>
