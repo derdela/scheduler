@@ -15,3 +15,6 @@ also a mongodb must be available at localhost:27017
 - write integration tests
 - rethink naming: 'maybe the "teacher" dir should be named "schedule"'
 - add capability to handle more than one static week.
+- minify files
+- add error scenarios (e.g. user was not found)
+- add logging / monitoring
